@@ -1,5 +1,6 @@
 package sn.edu.ugb.ipsl.gestionPretBanquaire.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -13,6 +14,7 @@ public class LoanRequest {
 
     @ManyToOne
     @JoinColumn(name = "client_id", nullable = false)
+    @JsonBackReference
     private Client client;
 
     @Column(nullable = false)
