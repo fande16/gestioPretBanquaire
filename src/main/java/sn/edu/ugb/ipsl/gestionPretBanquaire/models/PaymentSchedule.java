@@ -1,13 +1,13 @@
 package sn.edu.ugb.ipsl.gestionPretBanquaire.models;
 
-
-
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
-@Data
 @Entity
-public class RiskScore {
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class PaymentSchedule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,16 +18,11 @@ public class RiskScore {
     private LoanRequest loanRequest;
 
     @Column(nullable = false)
-    private Double score;
+    private Double amount;
 
     @Column(nullable = false)
-    private Double creditHistoryScore;
+    private java.sql.Timestamp dueDate;
 
-    @Column(nullable = false)
-    private Integer loanDurationMonths;
-
-    @Column(nullable = false)
-    private java.sql.Timestamp evaluationDate;
-
-    // Getters and Setters
+    @Column(nullable = true)
+    private Boolean paid;
 }
