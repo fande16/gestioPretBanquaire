@@ -36,4 +36,16 @@ public class LoanRequestService {
     public void deleteLoanRequestById(long id) {
         loanRequestRepository.deleteById(id);
     }
+    public LoanRequest updateLoanRequest(long id, LoanRequest loanRequestDetails) {
+        LoanRequest loanRequest = loanRequestRepository.findById(id).orElseThrow(() -> new RuntimeException("LoanRequest non trouvé pour l'id :: " + id));
+
+        loanRequest.setClient(loanRequestDetails.getClient());
+        loanRequest.setMontantPret(loanRequestDetails.getMontantPret());
+        loanRequest.setDureePret(loanRequestDetails.getDureePret());
+        loanRequest.setStatusId(loanRequestDetails.getStatusId());
+        loanRequest.setDateSoumission(loanRequestDetails.getDateSoumission());
+
+        loanRequestRepository.save(loanRequest);
+        return loanRequest;
+    }
 }
