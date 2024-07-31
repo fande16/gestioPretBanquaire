@@ -1,12 +1,10 @@
 package sn.edu.ugb.ipsl.gestionPretBanquaire.models;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Column;
+import lombok.Data;
 
 @Entity
+@Data
 public class Client {
 
     @Id
@@ -34,5 +32,8 @@ public class Client {
     @Column(nullable = false)
     private Double otherDebts;
 
-    // Getters and Setters
+    @OneToMany(mappedBy = "client")
+    private List<LoanRequest> loanRequests;
+
+
 }
