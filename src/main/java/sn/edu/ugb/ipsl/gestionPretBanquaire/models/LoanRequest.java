@@ -31,4 +31,4 @@ public class LoanRequest {
     @Column(nullable = false)
     private java.sql.Timestamp dateSoumission;
 
-}}
+}
