@@ -29,44 +29,5 @@ public class Document {
     @Column(name = "upload_date")
     private LocalDateTime uploadDate;
 
-    // Getters and Setters
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public LoanRequest getLoanRequest() {
-        return loanRequest;
-    }
-
-    public void setLoanRequest(LoanRequest loanRequest) {
-        this.loanRequest = loanRequest;
-    }
-
-    public String getDocumentType() {
-        return documentType;
-    }
-
-    public void setDocumentType(String documentType) {
-        this.documentType = documentType;
-    }
-
-    public String getDocumentPath() {
-        return documentPath;
-    }
-
-    public void setDocumentPath(String documentPath) {
-        this.documentPath = documentPath;
-    }
-
-    public LocalDateTime getUploadDate() {
-        return uploadDate;
-    }
-
-    public void setUploadDate(LocalDateTime uploadDate) {
-        this.uploadDate = uploadDate;
-    }
+    
 }
