@@ -8,7 +8,7 @@ import sn.edu.ugb.ipsl.gestionPretBanquaire.services.LoanRequestService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/loanRequests")
+@RequestMapping("/api/loanRequests")
 public class LoanRequestController {
 
     @Autowired
