@@ -2,13 +2,9 @@ package sn.edu.ugb.ipsl.gestionPretBanquaire.models;
 
 import jakarta.persistence.*;
 import lombok.*;
-import java.util.Collection;
-import sn.edu.ugb.ipsl.gestionPretBanquaire.models.*;
 
 @Entity
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class LoanRequest {
 
     @Id

@@ -1,4 +1,6 @@
 package sn.edu.ugb.ipsl.gestionPretBanquaire.models;
+import java.util.List;
+
 import jakarta.persistence.*;
 
 import lombok.Data;
