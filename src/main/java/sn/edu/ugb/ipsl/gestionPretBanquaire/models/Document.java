@@ -3,8 +3,11 @@ package sn.edu.ugb.ipsl.gestionPretBanquaire.models;
 
 
 import jakarta.persistence.*;
+import lombok.Data;
+
 import java.time.LocalDateTime;
 
+@Data
 @Entity
 @Table(name = "documents")
 public class Document {
