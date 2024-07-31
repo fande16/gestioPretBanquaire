@@ -2,6 +2,7 @@ package sn.edu.ugb.ipsl.gestionPretBanquaire.models;
 
 
 
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
