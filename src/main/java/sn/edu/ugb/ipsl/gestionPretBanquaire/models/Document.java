@@ -2,7 +2,7 @@ package sn.edu.ugb.ipsl.gestionPretBanquaire.models;
 
 
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
