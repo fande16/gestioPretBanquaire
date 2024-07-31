@@ -27,7 +27,8 @@ public class ClientService {
 
     public Client updateClient(Long id, Client clientDetails) {
         Client client = getClientById(id);
-        client.setName(clientDetails.getName());
+        client.setFirstname(clientDetails.getFirstname());
+        client.setLastname(clientDetails.getLastname());
         client.setEmail(clientDetails.getEmail());
         client.setPhoneNumber(clientDetails.getPhoneNumber());
         client.setAddress(clientDetails.getAddress());
