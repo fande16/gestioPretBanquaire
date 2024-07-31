@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import sn.edu.ugb.ipsl.gestionPretBanquaire.repositories.LoanRequestRepository;
 import sn.edu.ugb.ipsl.gestionPretBanquaire.models.LoanRequest;
 
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +21,9 @@ public class LoanRequestService {
     }
 
     public void saveLoanRequest(LoanRequest loanRequest) {
+        if (loanRequest.getDateSoumission() == null) {
+            loanRequest.setDateSoumission(Timestamp.from(Instant.now()));
+        }
         loanRequestRepository.save(loanRequest);
     }
 
@@ -36,8 +41,10 @@ public class LoanRequestService {
     public void deleteLoanRequestById(long id) {
         loanRequestRepository.deleteById(id);
     }
+
     public LoanRequest updateLoanRequest(long id, LoanRequest loanRequestDetails) {
-        LoanRequest loanRequest = loanRequestRepository.findById(id).orElseThrow(() -> new RuntimeException("LoanRequest non trouvé pour l'id :: " + id));
+        LoanRequest loanRequest = loanRequestRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("LoanRequest non trouvé pour l'id :: " + id));
 
         loanRequest.setClient(loanRequestDetails.getClient());
         loanRequest.setMontantPret(loanRequestDetails.getMontantPret());

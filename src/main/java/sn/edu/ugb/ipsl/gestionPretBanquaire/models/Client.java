@@ -1,6 +1,7 @@
 package sn.edu.ugb.ipsl.gestionPretBanquaire.models;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import lombok.Data;
@@ -40,6 +41,7 @@ public class Client {
     private Double otherDebts;
 
     @OneToMany(mappedBy = "client")
+    @JsonManagedReference
     private List<LoanRequest> loanRequests;
 
 
