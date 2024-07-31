@@ -8,7 +8,7 @@ import sn.edu.ugb.ipsl.gestionPretBanquaire.services.PaymentScheduleService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/paymentSchedules")
+@RequestMapping("/api/paymentSchedules")
 public class PaymentScheduleController {
 
     @Autowired
