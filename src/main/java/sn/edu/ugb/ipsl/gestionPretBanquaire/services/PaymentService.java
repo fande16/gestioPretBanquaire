@@ -21,6 +21,7 @@ public class PaymentService {
     @Autowired
     private LoanRequestRepository loanRequestRepository;
 
+
     public List<Payment> getAllPayments() {
         return paymentRepository.findAll();
     }
@@ -56,4 +57,10 @@ public class PaymentService {
     public void deletePayment(Long id) {
         paymentRepository.deleteById(id);
     }
+
+    public void savePayment(Payment payment) {
+        paymentRepository.save(payment);
+    }
+
+    
 }
