@@ -72,6 +72,12 @@
         .form-group .form-control {
             flex: 2;
         }
+
+        .submit-button {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
     </style>
 </head>
 
@@ -101,7 +107,9 @@
                     <input type="datetime-local" id="dateSoumission" name="dateSoumission" class="form-control"
                         th:field="*{dateSoumission}" required>
                 </div>
-                <button type="submit" class="btn btn-primary w-100" style="text-align: center;">Soumettre</button>
+                <div class="submit-button">
+                    <button type="submit" class="btn btn-primary">Soumettre</button>
+                </div>
             </form>
         </div>
     </div>
