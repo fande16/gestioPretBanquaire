@@ -20,11 +20,12 @@ public class LoanRequestService {
         return loanRequestRepository.findAll();
     }
 
-    public void saveLoanRequest(LoanRequest loanRequest) {
+    public LoanRequest saveLoanRequest(LoanRequest loanRequest) {
         if (loanRequest.getDateSoumission() == null) {
             loanRequest.setDateSoumission(Timestamp.from(Instant.now()));
         }
         loanRequestRepository.save(loanRequest);
+        return loanRequest;
     }
 
     public LoanRequest getLoanRequestById(long id) {
