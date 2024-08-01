@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des Demandes de Prêt</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
+
+</head>
+<body>
+<div class="container mt-4">
+    <h2 class="mb-4">Liste des Demandes de Prêt</h2>
+    <table class="table table-striped table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>Client</th>
+            <th>Montant du Prêt</th>
+            <th>Durée (mois)</th>
+            <th>Statut</th>
+            <th>Date de Soumission</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="loanRequest : ${loanRequests}">
+            <td th:text="${loanRequest.id}"></td>
+            <td th:text="${loanRequest.client.firstname} + ' ' + ${loanRequest.client.lastname}"></td>
+            <td th:text="${loanRequest.montantPret}"></td>
+            <td th:text="${loanRequest.dureePret}"></td>
+            <td th:text="${loanRequest.statusId}"></td>
+            <td th:text="${#dates.format(loanRequest.dateSoumission, 'dd/MM/yyyy HH:mm')}"></td>
+            <td>
+                <div class="btn-group" role="group">
+                    <form th:action="@{/demande-pret/approuver/{id}(id=${loanRequest.id})}" method="post" class="d-inline">
+                        <button type="submit" class="btn btn-success btn-sm">Approuver</button>
+                    </form>
+                    <form th:action="@{/demande-pret/rejeter/{id}(id=${loanRequest.id})}" method="post" class="d-inline">
+                        <button type="submit" class="btn btn-danger btn-sm">Rejeter</button>
+                    </form>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
