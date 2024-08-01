@@ -3,20 +3,28 @@ package sn.edu.ugb.ipsl.gestionPretBanquaire.viewcontrollers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import sn.edu.ugb.ipsl.gestionPretBanquaire.models.Client;
+=======
+import org.springframework.web.bind.annotation.*;
+>>>>>>> de5c83cac9c71838fd77b4b0f0784441a877c681
 import sn.edu.ugb.ipsl.gestionPretBanquaire.models.LoanRequest;
 import sn.edu.ugb.ipsl.gestionPretBanquaire.services.ClientService;
 import sn.edu.ugb.ipsl.gestionPretBanquaire.services.LoanRequestService;
 
+import java.util.List;
+
 @Controller
+@RequestMapping("/demande-pret")
 public class LoanRequestViewController {
 
     @Autowired
     private LoanRequestService loanRequestService;
 
+<<<<<<< HEAD
     @Autowired
     private ClientService clientService; // Service pour obtenir les détails du client
 
@@ -48,5 +56,48 @@ public class LoanRequestViewController {
         loanRequestService.saveLoanRequest(loanRequest);
 
         return "redirect:/success"; // Page de succès ou autre
+=======
+    @GetMapping
+    public String showLoanRequestForm(Model model) {
+        model.addAttribute("loanRequest", new LoanRequest());
+        return "loan-request"; // Nom du template Thymeleaf pour le formulaire
+    }
+
+    @PostMapping
+    public String submitLoanRequest(@ModelAttribute LoanRequest loanRequest) {
+        loanRequestService.saveLoanRequest(loanRequest);
+        return "redirect:/demande-pret/confirmation"; // Redirection vers la page de confirmation
+    }
+
+    @GetMapping("/liste")
+    public String listLoanRequests(Model model) {
+        List<LoanRequest> loanRequests = loanRequestService.getAllLoanRequests();
+        model.addAttribute("loanRequests", loanRequests);
+        return "list-demande-pret"; // Nom du template Thymeleaf pour la liste
+    }
+
+    @GetMapping("/confirmation")
+    public String showConfirmationPage() {
+        return "confirmation"; // Nom du template Thymeleaf pour la confirmation
+    }
+    @PostMapping("/approuver/{id}")
+    public String approuverLoanRequest(@PathVariable Long id) {
+        LoanRequest loanRequest = loanRequestService.getLoanRequestById(id);
+        if (loanRequest != null) {
+            loanRequest.setStatusId("Approuved");
+            loanRequestService.saveLoanRequest(loanRequest);
+        }
+        return "redirect:/demande-pret/liste";
+    }
+
+    @PostMapping("/rejeter/{id}")
+    public String rejeterLoanRequest(@PathVariable Long id) {
+        LoanRequest loanRequest = loanRequestService.getLoanRequestById(id);
+        if (loanRequest != null) {
+            loanRequest.setStatusId("Rejeted");
+            loanRequestService.saveLoanRequest(loanRequest);
+        }
+        return "redirect:/demande-pret/liste";
+>>>>>>> de5c83cac9c71838fd77b4b0f0784441a877c681
     }
 }
