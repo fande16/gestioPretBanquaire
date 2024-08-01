@@ -20,10 +20,10 @@
         </thead>
         <tbody>
         <tr th:each="payment : ${payments}">
-            <td th:text="${payment.id}">1</td>
-            <td th:text="${payment.loanRequest.id}">1</td>
-            <td th:text="${payment.amount}">1000.00</td>
-            <td th:text="${payment.paymentDate}">2024-08-01 12:00:00</td>
+            <td th:text="${payment.id}"></td>
+            <td th:text="${payment.loanRequest.id}"></td>
+            <td th:text="${payment.amount}"></td>
+            <td th:text="${payment.paymentDate}"></td>
         </tr>
         </tbody>
     </table>
