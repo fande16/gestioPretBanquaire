@@ -87,37 +87,73 @@
         <div class="form-container">
             <h2 class="form-header">Formulaire de Demande de Prêt</h2>
             <form th:action="@{/demande-pret}" th:object="${loanRequest}" method="post">
+                <!-- Champs Client -->
+                <div class="form-group">
+                    <label for="firstname" class="form-label">Prénom</label>
+                    <input type="text" id="firstname" name="firstname" class="form-control"
+                        th:field="*{client.firstname}" placeholder="Entrez votre prénom" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastname" class="form-label">Nom</label>
+                    <input type="text" id="lastname" name="lastname" class="form-control" th:field="*{client.lastname}"
+                        placeholder="Entrez votre nom" required>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" name="email" class="form-control" th:field="*{client.email}"
+                        placeholder="Entrez votre email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber" class="form-label">Numéro de téléphone</label>
+                    <input type="text" id="phoneNumber" name="phoneNumber" class="form-control"
+                        th:field="*{client.phoneNumber}" placeholder="Entrez votre numéro de téléphone">
+                </div>
+                <div class="form-group">
+                    <label for="address" class="form-label">Adresse</label>
+                    <input type="text" id="address" name="address" class="form-control" th:field="*{client.address}"
+                        placeholder="Entrez votre adresse">
+                </div>
+                <div class="form-group">
+                    <label for="income" class="form-label">Revenu</label>
+                    <input type="number" id="income" name="income" class="form-control" th:field="*{client.income}"
+                        placeholder="Entrez votre revenu" required>
+                </div>
+                <div class="form-group">
+                    <label for="age" class="form-label">Âge</label>
+                    <input type="number" id="age" name="age" class="form-control" th:field="*{client.age}"
+                        placeholder="Entrez votre âge" required>
+                </div>
+                <div class="form-group">
+                    <label for="employmentStatus" class="form-label">Statut d'emploi</label>
+                    <input type="text" id="employmentStatus" name="employmentStatus" class="form-control"
+                        th:field="*{client.employmentStatus}" placeholder="Entrez votre statut d'emploi" required>
+                </div>
+                <div class="form-group">
+                    <label for="otherDebts" class="form-label">Autres dettes</label>
+                    <input type="number" id="otherDebts" name="otherDebts" class="form-control"
+                        th:field="*{client.otherDebts}" placeholder="Entrez vos autres dettes" required>
+                </div>
+
+                <!-- Champs de la demande de prêt -->
                 <div class="form-group">
                     <label for="montantPret" class="form-label">Montant du prêt</label>
                     <input type="number" id="montantPret" name="montantPret" class="form-control"
-                        th:field="*{montantPret}" required>
+                        th:field="*{montantPret}" placeholder="Entrez le montant du prêt" required>
                 </div>
                 <div class="form-group">
-                    <label for="dureePret" class="form-label">Durée (mois)</label>
+                    <label for="dureePret" class="form-label">Durée du prêt (en mois)</label>
                     <input type="number" id="dureePret" name="dureePret" class="form-control" th:field="*{dureePret}"
-                        required>
+                        placeholder="Entrez la durée du prêt" required>
                 </div>
-                <div class="form-group">
-                    <label for="statusId" class="form-label">Statut</label>
-                    <input type="text" id="statusId" name="statusId" class="form-control" th:field="*{statusId}"
-                        required>
-                </div>
-                <div class="form-group">
-                    <label for="dateSoumission" class="form-label">Date de Soumission</label>
-                    <input type="datetime-local" id="dateSoumission" name="dateSoumission" class="form-control"
-                        th:field="*{dateSoumission}" required>
-                </div>
+
+                <!-- Bouton de soumission -->
                 <div class="submit-button">
-                    <button type="submit" class="btn btn-primary">Soumettre</button>
+                    <button type="submit" class="btn btn-primary">Soumettre la demande</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
 </body>
 
 </html>
